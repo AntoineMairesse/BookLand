@@ -6,6 +6,8 @@ use App\Repository\LivreRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use App\Validator as CustomAssert;
 
 /**
  * @ORM\Entity(repositoryClass=LivreRepository::class)
@@ -21,6 +23,7 @@ class Livre
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @CustomAssert\ISBN()
      */
     private $isbn;
 
@@ -31,26 +34,35 @@ class Livre
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Positive
      */
     private $nbpages;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\LessThanOrEqual("today")
      */
     private $date_de_parution;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *     min = 0,
+     *     max = 20,
+     *     notInRangeMessage="La note doit être comprise entre 0 et 20 !"
+     * )
      */
     private $note;
 
     /**
      * @ORM\ManyToMany(targetEntity=Genre::class, inversedBy="livres")
+     * @Assert\NotBlank
      */
     private $genre;
 
     /**
      * @ORM\ManyToMany(targetEntity=Auteur::class, inversedBy="livres")
+     * @Assert\NotBlank
      */
     private $auteur;
 

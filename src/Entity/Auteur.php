@@ -24,6 +24,10 @@ class Auteur
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Regex(
+     *     pattern = "/^[a-z ,.'-]+$/i",
+     *     message = "Veuillez saisir un nom prenom valide"
+     * )
      */
     private $nom_prenom;
 

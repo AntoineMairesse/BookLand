@@ -1,0 +1,42 @@
+{% extends "layoutgeneral.html.twig" %}
+{% block titre %}
+    Genres
+{% endblock %}
+
+{% block contenu %}
+    <h1>Liste de genres</h1><br>
+
+    <table class="table" border="solid">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Modification</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for genre in genres %}
+            <tr>
+                <td>{{ genre.id }}</td>
+                <td>{{ genre.nom }}</td>
+                <td>
+                    <a href="{{ path('genre_show', {'id': genre.id}) }}">Afficher</a>
+                    <a href="{{ path('genre_edit', {'id': genre.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn-primary btn-lg"><a class="text-decoration-none text-white"
+                                                                href="{{ path('genre_new') }}">Ajouter un genre</a>
+        </button>
+        <br>
+    </div>
+{% endblock %}

@@ -1,3 +1,19 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+bookland_accueil:
+    path: /accueil
+    controller: App\Controller\BookLandController::accueil
+
+bookland_afficher_auteurs:
+    path: /auteur
+    controller: App\Controller\BookLandController::afficher_liste_auteurs
+
+bookland_afficher_livres:
+    path: /livre
+    controller: App\Controller\BookLandController::afficher_liste_livres
+
+bookland_afficher_genres:
+    path: /genre
+    controller: App\Controller\BookLandController::afficher_liste_genres
+
+upnote:
+    path: /upnote/{id}
+    controller: App\Controller\LivreController::upNote

@@ -1,0 +1,26 @@
+{{ form_start(form) }}
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            {{ form_row(form.nom_prenom) }} <br>
+            {{ form_row(form.sexe) }} <br>
+        </div>
+        <div class="col-6">
+            {{ form_row(form.date_de_naissance) }} <br>
+            {{ form_row(form.nationalite) }} <br>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+        </div>
+        <div class="col-6 d-flex justify-content-center">
+            <button class="btn btn-primary btn-lg">{{ button_label|default('Sauvegarder') }}</button>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+</div>
+{{ form_end(form) }}

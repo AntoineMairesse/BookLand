@@ -1,0 +1,26 @@
+{{ form_start(form) }}
+<div class="container">
+    <div class="row">
+        <div class="col-1">
+        </div>
+        <div class="col-10">
+            {{ form_row(form.nom) }}
+        </div>
+        <div class="col-1">
+        </div>
+    </div>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+        </div>
+        <div class="col-6 d-flex justify-content-center">
+            <button class="btn btn-primary btn-lg">{{ button_label|default('Sauvegarder') }}</button>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+</div>
+{{ form_end(form) }}
+

@@ -1,0 +1,11 @@
+{% extends "layoutgeneral.html.twig" %}
+{% block titre %}
+    Ajouter un livre
+{% endblock %}
+
+{% block contenu %}
+    <h1>Ajouter un livre</h1><br>
+
+    {{ include('livre/_form.html.twig') }}
+
+{% endblock %}

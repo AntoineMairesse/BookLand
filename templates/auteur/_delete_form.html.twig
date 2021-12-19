@@ -1,0 +1,6 @@
+<form method="post" action="{{ path('auteur_delete', {'id': auteur.id}) }}" onsubmit="return confirm('Confimer ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ auteur.id) }}">
+    <button class="btn btn-danger btn-lg">Supprimer</button>
+</form>
+
+

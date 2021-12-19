@@ -1,0 +1,62 @@
+{% extends "layoutgeneral.html.twig" %}
+{% block titre %}
+    Livres
+{% endblock %}
+
+{% block contenu %}
+    <h1>Liste des livres</h1><br>
+
+    <table class="table" border="solid">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>ISBN</th>
+            <th>Titre</th>
+            <th>Nbpages</th>
+            <th>Date de parution</th>
+            <th>Note</th>
+            <th>Auteur(s)</th>
+            <th>Genre(s)</th>
+            <th>Modification</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for livre in livres %}
+            <tr>
+                <td>{{ livre.id }}</td>
+                <td>{{ livre.isbn }}</td>
+                <td>{{ livre.titre }}</td>
+                <td>{{ livre.nbpages }}</td>
+                <td>{{ livre.dateDeParution ? livre.dateDeParution|date('Y-m-d') : '' }}</td>
+                <td>{{ livre.note }}</td>
+                <td>
+                    {% for auteur in livre.auteur %}
+                        {{ auteur }},
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for genre in livre.genre %}
+                        {{ genre }},
+                    {% endfor %}
+                </td>
+                <td>
+                    <a href="{{ path('livre_show', {'id': livre.id}) }}">Afficher</a>
+                    <a href="{{ path('livre_edit', {'id': livre.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn-primary btn-lg"><a class="text-decoration-none text-white"
+                                                                href="{{ path('livre_new') }}">Ajouter un livre</a>
+        </button>
+        <br>
+    </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "layoutgeneral.html.twig" %}
+{% block titre %}
+    Modifier l'auteur
+{% endblock %}
+
+{% block contenu %}
+    <h1>Modifier l'auteur</h1><br>
+    {{ include('auteur/_form.html.twig', {'button_label': 'Modifier'}) }}
+    <br>
+    <div class="d-flex justify-content-around">
+        {{ include('auteur/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

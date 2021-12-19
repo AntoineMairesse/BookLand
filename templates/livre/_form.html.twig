@@ -1,0 +1,29 @@
+{{ form_start(form) }}
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            {{ form_row(form.isbn) }} <br>
+            {{ form_row(form.titre) }} <br>
+            {{ form_row(form.nbpages) }} <br>
+            {{ form_row(form.date_de_parution) }} <br>
+        </div>
+        <div class="col-6">
+            {{ form_row(form.note) }} <br>
+            {{ form_row(form.auteur) }} <br>
+            {{ form_row(form.genre) }} <br>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+        </div>
+        <div class="col-6 d-flex justify-content-center">
+            <button class="btn btn-primary btn-lg">{{ button_label|default('Sauvegarder') }}</button>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+</div>
+{{ form_end(form) }}

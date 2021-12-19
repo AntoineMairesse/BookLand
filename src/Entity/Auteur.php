@@ -6,9 +6,12 @@ use App\Repository\AuteurRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=AuteurRepository::class)
+ * @UniqueEntity("nom_prenom")
  */
 class Auteur
 {
@@ -26,16 +29,25 @@ class Auteur
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Regex(
+     *     pattern = "/(M$|F$)/",
+     *     message = "M ou F"
+     * )
      */
     private $sexe;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\LessThanOrEqual("today")
      */
     private $date_de_naissance;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Regex(
+     *     pattern = "/[a-zA-Z]{2,}/",
+     *     message = "Veuillez entrer un nom de pays valide"
+     * )
      */
     private $nationalite;
 

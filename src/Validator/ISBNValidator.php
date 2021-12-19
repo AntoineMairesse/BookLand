@@ -35,11 +35,15 @@ class ISBNValidator extends ConstraintValidator
                 ->addViolation();
         }
 
+        //On compte le nombre de chiffres dans l'expression
         $value = strval($value);
         preg_replace_callback('/\d/', function ($m) use (&$count) {
             $count++;
         }, $value);
 
+        //Soit X la somme des chiffres en position paire et soit Y la somme des chiffres en position
+        //impaire (on considère que le chiffre le plus à droite est en position 1). 3X+Y doit être
+        //divisible par 10.
         if(!$this->calcul($value)){
             $this->context->buildViolation($constraint->message4)
                 ->addViolation();
@@ -52,6 +56,7 @@ class ISBNValidator extends ConstraintValidator
             return;
         }
 
+        //On compte le nombre de traits d'union dans l'expression
         $count = 0;
         preg_replace_callback('/-/', function () use (&$count) {
             $count++;

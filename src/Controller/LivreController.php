@@ -96,7 +96,7 @@ class LivreController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $livre = $this->getDoctrine()->getRepository(Livre::class)->find($id);
-        if($livre != null){
+        if ($livre != null) {
             $livre->setNote($livre->getNote() + 1);
             $em->flush();
             return $this->render('livre/show.html.twig', [
@@ -111,7 +111,7 @@ class LivreController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $livre = $this->getDoctrine()->getRepository(Livre::class)->find($id);
-        if($livre != null){
+        if ($livre != null) {
             $livre->setNote($livre->getNote() - 1);
             $em->flush();
             return $this->render('livre/show.html.twig', [

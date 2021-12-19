@@ -8,42 +8,44 @@
 
     <table class="table" border="solid">
         <tbody>
-            <tr>
-                <th>ID</th>
-                <td>{{ livre.id }}</td>
-            </tr>
-            <tr>
-                <th>ISBN</th>
-                <td>{{ livre.isbn }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ livre.titre }}</td>
-            </tr>
-            <tr>
-                <th>Nbpages</th>
-                <td>{{ livre.nbpages }}</td>
-            </tr>
-            <tr>
-                <th>Date de parution</th>
-                <td>{{ livre.dateDeParution ? livre.dateDeParution|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Note</th>
-                <td>{{ livre.note }}</td>
-            </tr>
+        <tr>
+            <th>ID</th>
+            <td>{{ livre.id }}</td>
+        </tr>
+        <tr>
+            <th>ISBN</th>
+            <td>{{ livre.isbn }}</td>
+        </tr>
+        <tr>
+            <th>Titre</th>
+            <td>{{ livre.titre }}</td>
+        </tr>
+        <tr>
+            <th>Nbpages</th>
+            <td>{{ livre.nbpages }}</td>
+        </tr>
+        <tr>
+            <th>Date de parution</th>
+            <td>{{ livre.dateDeParution ? livre.dateDeParution|date('Y-m-d') : '' }}</td>
+        </tr>
+        <tr>
+            <th>Note</th>
+            <td>{{ livre.note }}</td>
+        </tr>
         </tbody>
     </table>
-<br>
+    <br>
     <div class="container">
         <div class="row">
-           <div class="col-xl-3 col-lg-3 col-md-2 col-sm-1 col-xs-1"></div>
-           <div class="col-xl-6 col-lg-6 col-md-8 col-sm-10 col-xs-10">
-               <div class="d-flex justify-content-around">
-                   <button type="button" class="btn btn-primary btn-lg"><a class="text-decoration-none text-white" href="{{ path('livre_edit', {'id': livre.id}) }}">Modifier</a></button>
-                   {{ include('livre/_delete_form.html.twig') }}
-               </div>
-           </div>
+            <div class="col-xl-3 col-lg-3 col-md-2 col-sm-1 col-xs-1"></div>
+            <div class="col-xl-6 col-lg-6 col-md-8 col-sm-10 col-xs-10">
+                <div class="d-flex justify-content-around">
+                    <button type="button" class="btn btn-primary btn-lg"><a class="text-decoration-none text-white"
+                                                                            href="{{ path('livre_edit', {'id': livre.id}) }}">Modifier</a>
+                    </button>
+                    {{ include('livre/_delete_form.html.twig') }}
+                </div>
+            </div>
             <div class="col-xl-3 col-lg-3 col-md-2 col-sm-1 col-xs-1"></div>
         </div>
     </div>

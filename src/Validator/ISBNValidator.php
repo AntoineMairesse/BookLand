@@ -44,7 +44,7 @@ class ISBNValidator extends ConstraintValidator
         //Soit X la somme des chiffres en position paire et soit Y la somme des chiffres en position
         //impaire (on considère que le chiffre le plus à droite est en position 1). 3X+Y doit être
         //divisible par 10.
-        if(!$this->calcul($value)){
+        if (!$this->calcul($value)) {
             $this->context->buildViolation($constraint->message4)
                 ->addViolation();
         }
@@ -75,7 +75,7 @@ class ISBNValidator extends ConstraintValidator
         $Y = 0;
         $index = 1;
         $order = 1;
-        while(($val = substr($value, $index-1, 1)) != ''){
+        while (($val = substr($value, $index - 1, 1)) != '') {
             if (preg_match('/\d/', $val, $matches)) {
                 if ($order == 0) {
                     $X += intval($val);
@@ -87,11 +87,10 @@ class ISBNValidator extends ConstraintValidator
             }
             $index++;
         }
-        $test = ((((3*$X)+$Y) % 10));
-        if($X = 0 && $Y == 0){
+        $test = ((((3 * $X) + $Y) % 10));
+        if ($X = 0 && $Y == 0) {
             return false;
-        }
-        else if($test == 0){
+        } else if ($test == 0) {
             return true;
         } else {
             return false;

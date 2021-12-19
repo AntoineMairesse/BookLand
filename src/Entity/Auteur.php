@@ -42,14 +42,17 @@ class Auteur
 
     /**
      * @ORM\Column(type="date")
-     * @Assert\LessThanOrEqual("today")
+     * @Assert\LessThanOrEqual(
+     *     value="today",
+     *     message="Veuillez entrer une date valide (pas dans le futur)"
+     * )
      */
     private $date_de_naissance;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Regex(
-     *     pattern = "/[a-zA-Z]{2,}/",
+     *     pattern = "/^[a-zA-Z]{2,}$/",
      *     message = "Veuillez entrer un nom de pays valide"
      * )
      */
@@ -60,15 +63,15 @@ class Auteur
      */
     private $livres;
 
-	public function __toString()
-               	{
-               		return $this->nom_prenom;
-               	}
-
     public function __construct()
     {
         $this->livre = new ArrayCollection();
         $this->livres = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->nom_prenom;
     }
 
     public function getId(): ?int

@@ -3,11 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\LivreRepository;
+use App\Validator as CustomAssert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use App\Validator as CustomAssert;
 
 /**
  * @ORM\Entity(repositoryClass=LivreRepository::class)
@@ -29,18 +29,24 @@ class Livre
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(max="255", maxMessage="Le titre du livre ne doit pas dépasser 255 caractères !")
      */
     private $titre;
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\Positive
+     * @Assert\Positive(
+     *    message="Veuillez entrer une valeur positive"
+     * )
      */
     private $nbpages;
 
     /**
      * @ORM\Column(type="date")
-     * @Assert\LessThanOrEqual("today")
+     * @Assert\LessThanOrEqual(
+     *     value="today",
+     *     message="Veuillez entrer une date valide (pas dans le futur)"
+     * )
      */
     private $date_de_parution;
 
@@ -66,16 +72,16 @@ class Livre
      */
     private $auteur;
 
-	public function __toString()
-               	{
-               		return $this->titre;
-               	}
-
     public function __construct()
     {
         $this->auteurs = new ArrayCollection();
         $this->genre = new ArrayCollection();
         $this->auteur = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->titre;
     }
 
     public function getId(): ?int
